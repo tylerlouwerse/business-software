@@ -16,8 +16,10 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^2.2.18",
+        "@primeuix/themes": "^2.0.1",
         "@vitejs/plugin-vue": "^6.0.2",
         "@vue/tsconfig": "^0.8.1",
+        "primevue": "^4.4.1",
         "typescript": "^5.9.3",
         "vue": "^3.5.25"
     }

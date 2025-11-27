@@ -2,6 +2,8 @@ import { createApp, h } from "vue";
 import type { DefineComponent } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import PrimeVue from "primevue/config";
+import { AppTheme } from "@/theme";
 
 import "../css/app.css";
 
@@ -17,6 +19,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     return createApp({ render: () => h(App, props) })
       .use(plugin)
+      .use(PrimeVue, { theme: { preset: AppTheme } })
       .mount(el);
   },
   progress: {
