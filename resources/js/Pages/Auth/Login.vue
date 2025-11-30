@@ -57,7 +57,7 @@
 
           <div class="text-sm">
             <Link
-              href="/forgot-password"
+              :href="route('password-reset.create', { email: form.email })"
               class="font-medium text-primary-600 hover:text-primary-500"
             >
               Forgot your password?
@@ -81,6 +81,7 @@ import { computed } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import Head from "@/Components/Head.vue";
 import { Button, Checkbox, InputText, Link } from "@/Components/Core";
+import { route } from "@/Utils/route";
 
 const form = useForm({
   email: "",
@@ -101,7 +102,7 @@ const error = computed<string>(() => {
 });
 
 const submit = () => {
-  form.post("/login", {
+  form.post(route("authenticate"), {
     onFinish: () => form.reset("password"),
   });
 };
