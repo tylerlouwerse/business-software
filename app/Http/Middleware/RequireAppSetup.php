@@ -33,4 +33,3 @@ class RequireAppSetup
         return $next($request);
     }
 }
-

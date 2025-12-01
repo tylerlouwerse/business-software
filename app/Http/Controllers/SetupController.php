@@ -51,4 +51,3 @@ class SetupController extends Controller
         return redirect()->route('dashboard')->with('status', 'App setup completed successfully!');
     }
 }
-

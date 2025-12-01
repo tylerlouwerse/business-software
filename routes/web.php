@@ -29,6 +29,6 @@ Route::middleware('auth')->group(function () {
 Route::match(['get', 'post', 'put', 'patch', 'delete', 'options'], '{fallbackPlaceholder?}', function () {
     return Inertia::render('404');
 })
-->where('fallbackPlaceholder', '.*')
-->fallback()
-->name('404');
+    ->where('fallbackPlaceholder', '.*')
+    ->fallback()
+    ->name('404');
