@@ -6,7 +6,7 @@ export function route(name: string, params?: any) {
   } catch (error) {
     console.error(`Route ${name} not found.`);
 
-    return ziggyRoute("404", "/not-found");
+    return ziggyRoute("404", "/page-not-found");
   }
 }
 

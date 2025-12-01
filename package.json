@@ -15,12 +15,15 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
+        "@floating-ui/vue": "^1.1.9",
         "@inertiajs/vue3": "^2.2.18",
         "@primeuix/themes": "^2.0.1",
         "@vitejs/plugin-vue": "^6.0.2",
         "@vue/tsconfig": "^0.8.1",
+        "lodash": "^4.17.21",
         "primevue": "^4.4.1",
         "typescript": "^5.9.3",
+        "vite-svg-loader": "^5.1.0",
         "vue": "^3.5.25",
         "ziggy-js": "^2.6.0"
     }

@@ -18,6 +18,11 @@ export default {
           950: "#290a0d",
         },
       },
+      fontSize: {
+        "3xs": "0.4rem",
+        "2xs": "0.5rem",
+        xs: "0.625rem",
+      },
     },
   },
 };
