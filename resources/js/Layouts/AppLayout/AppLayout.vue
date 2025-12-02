@@ -1,11 +1,11 @@
 <template>
-  <AppHeader class="h-[45px]" />
+  <AppHeader class="h-[40px]" />
   <div class="grid grid-cols-[40px_1fr] h-[calc(100vh-45px)]">
     <ModuleSelectSidebar />
     <div>
-      <div class="grid grid-cols-[175px_1fr] h-[calc(100vh-75px)]">
+      <div class="grid grid-cols-[175px_1fr] h-[calc(100vh-70px)]">
         <AppSidebar />
-        <div class="overflow-y-auto h-[calc(100vh-75px)] bg-gray-50">
+        <div class="overflow-y-auto h-[calc(100vh-70px)] bg-gray-50">
           <slot />
         </div>
       </div>
