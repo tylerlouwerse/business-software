@@ -33,6 +33,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = [
+        'initials',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -44,5 +48,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getInitialsAttribute(): string
+    {
+        $name = $this->name ?? '';
+        $parts = explode(' ', $name);
+
+        if (count($parts) >= 2) {
+            return strtoupper($parts[0][0] . $parts[count($parts) - 1][0]);
+        }
+
+        if (count($parts) === 1 && strlen($parts[0]) > 0) {
+            return strtoupper($parts[0][0]);
+        }
+
+        return '??';
     }
 }

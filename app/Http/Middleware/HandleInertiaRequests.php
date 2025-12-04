@@ -35,9 +35,12 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $user = $request->user();
+
         return [
             ...parent::share($request),
-            //
+            // TODO: Sanitize user data before passing to the frontend
+            'user' => $user,
         ];
     }
 }
