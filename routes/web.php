@@ -10,6 +10,7 @@ use Inertia\Inertia;
 // Authentication
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Forgot Password
 Route::get('/reset-password', [ResetPasswordController::class, 'create'])->name('password-reset.create');

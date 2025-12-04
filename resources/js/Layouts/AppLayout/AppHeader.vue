@@ -3,7 +3,7 @@
     class="flex bg-primary-700 items-center justify-between p-2 text-stone-200"
   >
     <div class="flex items-center">
-      <Tooltip message="Switch apps" placement="bottom" remove-arrow>
+      <Tooltip message="Switch to..." placement="bottom" remove-arrow>
         <div
           class="flex h-[27px] w-[27px] mr-4 cursor-pointer items-center justify-center rounded-lg transition duration-150 hover:bg-primary-800 active:bg-primary-600"
         >

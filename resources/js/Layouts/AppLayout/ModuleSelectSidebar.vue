@@ -3,7 +3,7 @@
     class="flex min-w-[40px] flex-col items-center gap-y-2 border-r border-stone-200 bg-stone-900 p-2 text-stone-200"
   >
     <div class="flex flex-col gap-y-2">
-      <Tooltip message="CRM" placement="right" remove-arrow>
+      <Tooltip message="CRM" placement="right" :offset="7" remove-arrow>
         <Link :href="route('crm')">
           <div
             class="rounded-md p-1"
@@ -16,7 +16,7 @@
           </div>
         </Link>
       </Tooltip>
-      <Tooltip message="HRIS" placement="right" remove-arrow>
+      <Tooltip message="HRIS" placement="right" :offset="7" remove-arrow>
         <Link :href="route('hris')">
           <div
             class="rounded-md p-1"
@@ -29,7 +29,7 @@
           </div>
         </Link>
       </Tooltip>
-      <Tooltip message="Projects" placement="right" remove-arrow>
+      <Tooltip message="Projects" placement="right" :offset="7" remove-arrow>
         <Link :href="route('projects')">
           <div
             class="rounded-md p-1"
@@ -43,7 +43,7 @@
           </div>
         </Link>
       </Tooltip>
-      <Tooltip message="Finance" placement="right" remove-arrow>
+      <Tooltip message="Finance" placement="right" :offset="7" remove-arrow>
         <Link :href="route('finance')">
           <div
             class="rounded-md p-1"
