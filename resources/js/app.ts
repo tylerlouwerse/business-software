@@ -5,10 +5,14 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import PrimeVue from "primevue/config";
 import { AppTheme } from "@/theme";
 import { ZiggyVue } from "ziggy-js";
-
+import { configureEcho } from "@laravel/echo-vue";
 import "../css/app.css";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+
+configureEcho({
+  broadcaster: "reverb",
+});
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
