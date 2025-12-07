@@ -1,6 +1,6 @@
 <template>
   <Tooltip message="Account" placement="bottom" remove-arrow>
-    <OverlayPanel sharp>
+    <OverlayPanel>
       <template #trigger>
         <div
           class="flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full transition duration-150 hover:bg-primary-800 active:bg-primary-600"

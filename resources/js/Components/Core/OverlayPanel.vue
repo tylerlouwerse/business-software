@@ -11,7 +11,7 @@
 
     <div
       ref="overlay"
-      class="overlay-portion w-full rounded-sm shadow-lg"
+      :class="unstyled ? '' : 'overlay-portion w-full rounded-sm shadow-lg'"
       v-if="visible"
       :style="floatingStyles"
     >
@@ -21,25 +21,28 @@
 </template>
 
 <script lang="ts" setup>
-import type { PropType } from "vue";
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import type { Placement } from "@floating-ui/vue";
-import { useFloating, flip } from "@floating-ui/vue";
+import { useFloating, flip, offset } from "@floating-ui/vue";
 
-const props = defineProps({
-  disabled: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  overlayStyles: {
-    type: String as PropType<string>,
-    default: "",
-  },
-  placement: {
-    type: String as PropType<Placement>,
-    default: "bottom-start",
-  },
-});
+const visible = defineModel<boolean>("visible", { default: false });
+
+const props = withDefaults(
+  defineProps<{
+    disabled?: boolean;
+    overlayStyles?: string;
+    placement?: Placement;
+    unstyled?: boolean;
+    offset?: number;
+  }>(),
+  {
+    disabled: false,
+    overlayStyles: "",
+    placement: "bottom-start",
+    unstyled: false,
+    offset: 0,
+  }
+);
 
 const emit = defineEmits({
   open: () => true,
@@ -50,9 +53,8 @@ const trigger = ref<HTMLElement | null>(null);
 const overlay = ref<HTMLElement | null>(null);
 
 const panel = ref<HTMLElement | null>(null);
-const visible = ref<boolean>(false);
 
-const middleware = ref([flip()]);
+const middleware = ref([offset(props.offset), flip()]);
 const { floatingStyles } = useFloating(trigger, overlay, {
   placement: props.placement,
   middleware,
