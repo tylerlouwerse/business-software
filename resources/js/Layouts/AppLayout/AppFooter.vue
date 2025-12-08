@@ -1,21 +1,24 @@
 <template>
   <footer
-    class="border-t border-gray-200 shadow-lg flex items-center justify-between"
+    class="h-[30px] border-t border-gray-200 shadow-lg flex items-center justify-between"
   >
-    <div class="flex items-center border-r border-gray-200 h-full">
-      <MessagesPopover />
-      <div
-        class="w-[80px] flex flex-col items-center text-gray-400 hover:bg-gray-100 active:shadow-inner shadow-gray-300 cursor-pointer"
-      >
-        <MultiUserIcon class="h-5 w-5" />
-        <div class="text-2xs">Channels</div>
+    <div class="flex items-center h-full">
+      <div class="flex items-center border-r border-gray-200 h-full">
+        <ChatListPopover />
+        <div
+          class="w-[83.3px] h-[29px] flex flex-col items-center text-gray-400 hover:bg-gray-100 active:shadow-inner shadow-gray-300 cursor-pointer"
+        >
+          <MultiUserIcon class="h-5 w-5" />
+          <div class="text-2xs">Channels</div>
+        </div>
+        <div
+          class="w-[83.3px] h-[29px] flex flex-col items-center text-gray-400 hover:bg-gray-100 active:shadow-inner shadow-gray-300 cursor-pointer"
+        >
+          <UserIcon class="h-5 w-5" />
+          <div class="text-2xs">Contacts</div>
+        </div>
       </div>
-      <div
-        class="w-[80px] flex flex-col items-center text-gray-400 hover:bg-gray-100 active:shadow-inner shadow-gray-300 cursor-pointer"
-      >
-        <UserIcon class="h-5 w-5" />
-        <div class="text-2xs">Contacts</div>
-      </div>
+      <ChatPopover />
     </div>
 
     <div class="flex items-center h-full">
@@ -39,7 +42,7 @@
       </Tooltip>
       <Tooltip
         message="Files"
-        class="w-[60px] h-full flex items-center justify-center hover:bg-gray-100 text-gray-500 active:bg-gray-200 cursor-pointer border-l border-gray-200"
+        class="w-[60px] h-full flex items-center justify-center hover:bg-gray-100 text-gray -500 active:bg-gray-200 cursor-pointer border-l border-gray-200"
         placement="top"
         :offset="10"
         remove-arrow
@@ -52,7 +55,8 @@
 
 <script lang="ts" setup>
 import { Tooltip } from "@/Components/Core";
-import MessagesPopover from "@/Components/Chat/MessagesPopover.vue";
+import ChatListPopover from "@/Components/Chat/ChatListPopover.vue";
+import ChatPopover from "@/Components/Chat/ChatPopover.vue";
 import MultiUserIcon from "@/../svg/multi-user.svg?component";
 import UserIcon from "@/../svg/user.svg?component";
 import StopwatchIcon from "@/../svg/stopwatch.svg?component";
