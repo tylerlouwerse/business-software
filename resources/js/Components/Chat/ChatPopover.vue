@@ -1,9 +1,11 @@
 <template>
   <OverlayPanel
+    ref="overlayPanelRef"
     v-model:visible="open"
     placement="top-start"
     unstyled
     :offset="-29"
+    disable-clickoff
   >
     <template #trigger>
       <div
@@ -22,6 +24,7 @@
           <XMarkIcon
             @click.stop
             class="h-5 w-5 text-gray-400 hover:text-gray-500 cursor-pointer"
+            @click="chat.closeChannel(props.channel)"
           />
         </div>
       </div>
@@ -64,6 +67,7 @@
           </div>
           <div
             class="border border-gray-200 rounded-lg p-1 hover:bg-gray-100 active:bg-gray-200 cursor-pointer"
+            @click="chat.closeChannel(props.channel)"
           >
             <XMarkIcon class="h-4 w-4 text-gray-400" />
           </div>
@@ -88,6 +92,7 @@
             <AttachmentIcon class="h-5 w-5 text-gray-400" />
           </div>
           <Textarea
+            autofocus
             class="w-full pl-[40px]! pr-[55px]! text-gray-600!"
             style="resize: none"
           />
@@ -113,7 +118,29 @@ import AttachmentIcon from "@/../svg/attachment.svg?component";
 import ChevronDownIcon from "@/../svg/chevron-down.svg?component";
 import FaceSmileIcon from "@/../svg/face-smile.svg?component";
 import MicrophoneIcon from "@/../svg/microphone.svg?component";
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
+import { useChatStore } from "@/Stores/useChatStore";
 
-const open = ref(false);
+const chat = useChatStore();
+const open = ref(true);
+const overlayPanelRef = ref<InstanceType<typeof OverlayPanel> | null>(null);
+const props = defineProps<{
+  channel: Channel;
+}>();
+
+watch(
+  () => chat.forceOpenChannel,
+  async (newId) => {
+    if (newId === props.channel.id) {
+      // open panel
+      overlayPanelRef.value?.open();
+
+      // reset force open channel
+      chat.forceOpenChannel = null;
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

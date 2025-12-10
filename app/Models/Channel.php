@@ -52,4 +52,15 @@ class Channel extends Model
     {
         return $this->type === ChannelType::GROUP;
     }
+
+    public function getDisplayName(int $userId): string
+    {
+        if ($this->isDirect()) {
+            $otherMember = $this->members()->where('users.id', '!=', $userId)->first();
+
+            return $otherMember?->name ?? 'Unknown User';
+        }
+
+        return $this->name;
+    }
 }

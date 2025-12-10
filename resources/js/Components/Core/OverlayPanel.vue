@@ -53,6 +53,7 @@ const trigger = ref<HTMLElement | null>(null);
 const overlay = ref<HTMLElement | null>(null);
 
 const panel = ref<HTMLElement | null>(null);
+const disableClickoff = ref<boolean>(true);
 
 const middleware = ref([offset(props.offset), flip()]);
 const { floatingStyles } = useFloating(trigger, overlay, {
@@ -61,6 +62,11 @@ const { floatingStyles } = useFloating(trigger, overlay, {
 });
 
 const clickOff = (event: Event) => {
+  if (disableClickoff.value) {
+    disableClickoff.value = false;
+    return;
+  }
+
   if (event && !panel.value?.contains(event.target as Node)) {
     visible.value = false;
     emit("close");
@@ -94,8 +100,14 @@ const toggle = (event: Event) => {
 };
 
 const open = () => {
+  disableClickoff.value = true;
+
   visible.value = true;
   emit("open");
+
+  setTimeout(() => {
+    disableClickoff.value = false;
+  }, 500);
 };
 
 const close = () => {
@@ -105,6 +117,10 @@ const close = () => {
 
 onMounted(() => {
   window.addEventListener("click", clickOff);
+
+  setTimeout(() => {
+    disableClickoff.value = false;
+  }, 500);
 });
 
 onUnmounted(() => {
@@ -123,7 +139,6 @@ watch(
 defineExpose({
   open,
   close,
-  toggle,
 });
 </script>
 

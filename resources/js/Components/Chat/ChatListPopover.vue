@@ -94,7 +94,10 @@
           </div>
           <div>
             <div
+              v-for="channel in chat.channels"
+              :key="channel.id"
               class="px-2 flex items-center gap-x-3 hover:bg-primary-50 active:bg-primary-100 p-2 transition-colors cursor-pointer"
+              @click="handleOpenChannel(channel)"
             >
               <div
                 class="flex h-[35px] w-[35px] items-center justify-center rounded-full bg-pink-200"
@@ -122,6 +125,13 @@ import MinusIcon from "@/../svg/minus.svg?component";
 import MagnifyingGlassIcon from "@/../svg/magnifying-glass.svg?component";
 import EllipsisCircleFilledIcon from "@/../svg/ellipsis-circle-filled.svg?component";
 import { ref } from "vue";
+import { useChatStore } from "@/Stores/useChatStore";
 
+const chat = useChatStore();
 const open = ref(false);
+
+const handleOpenChannel = (channel: Channel) => {
+  chat.openChannel(channel);
+  open.value = false;
+};
 </script>

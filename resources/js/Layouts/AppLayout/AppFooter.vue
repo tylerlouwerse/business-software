@@ -18,7 +18,11 @@
           <div class="text-2xs">Contacts</div>
         </div>
       </div>
-      <ChatPopover />
+      <ChatPopover
+        v-for="channel in chat.openChannels"
+        :key="channel.id"
+        :channel
+      />
     </div>
 
     <div class="flex items-center h-full">
@@ -62,4 +66,7 @@ import UserIcon from "@/../svg/user.svg?component";
 import StopwatchIcon from "@/../svg/stopwatch.svg?component";
 import FolderIcon from "@/../svg/folder.svg?component";
 import IdentificationIcon from "@/../svg/identification.svg?component";
+import { useChatStore } from "@/Stores/useChatStore";
+
+const chat = useChatStore();
 </script>

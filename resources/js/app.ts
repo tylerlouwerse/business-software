@@ -5,6 +5,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import PrimeVue from "primevue/config";
 import { AppTheme } from "@/theme";
 import { ZiggyVue } from "ziggy-js";
+import { createPinia } from "pinia";
 import { configureEcho } from "@laravel/echo-vue";
 import "../css/app.css";
 
@@ -22,10 +23,12 @@ createInertiaApp({
       import.meta.glob<DefineComponent>("./Pages/**/*.vue")
     ),
   setup({ el, App, props, plugin }) {
+    const pinia = createPinia();
     return createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(PrimeVue, { theme: { preset: AppTheme } })
       .use(ZiggyVue)
+      .use(pinia)
       .mount(el);
   },
   progress: {
